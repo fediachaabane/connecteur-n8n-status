@@ -15,7 +15,7 @@ export const CPECard = ({ cpe }: { cpe: CPE }) => {
   const timeAgo = getTimeAgo(lastSeenDate);
 
   return (
-    <div className="group relative rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_hsl(175_70%_45%/0.08)]">
+    <div className="group relative rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-lg">
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3 className="font-display font-semibold text-foreground">{cpe.name}</h3>
