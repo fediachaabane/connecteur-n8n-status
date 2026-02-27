@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { mockCPEs } from "@/data/mockCPE";
+import { mockAlerts } from "@/data/mockAlerts";
 import { CPECard } from "@/components/CPECard";
 import { StatsBar } from "@/components/StatsBar";
+import { AlertsList } from "@/components/AlertsList";
+import { TrafficChart } from "@/components/TrafficChart";
+import { FirmwareChart } from "@/components/FirmwareChart";
+import { ProvisioningChart } from "@/components/ProvisioningChart";
 import { CPEStatus } from "@/types/cpe";
-import { Radio, Search } from "lucide-react";
+import { Radio, Search, Bell, BarChart3, Cpu } from "lucide-react";
 
 const filters: { label: string; value: CPEStatus | "all" }[] = [
   { label: "Tous", value: "all" },
@@ -30,15 +35,15 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
+      <header className="border-b border-border bg-card sticky top-0 z-10">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-primary/10 p-2">
+              <div className="rounded-xl bg-primary/10 p-2.5">
                 <Radio className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-xl font-bold font-display text-foreground text-glow-primary">
+                <h1 className="text-xl font-bold font-display text-foreground">
                   Connecteur
                 </h1>
                 <p className="text-xs text-muted-foreground font-mono">
@@ -57,6 +62,44 @@ const Index = () => {
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 space-y-6">
         {/* Stats */}
         <StatsBar cpes={mockCPEs} />
+
+        {/* Charts Row */}
+        <div className="grid gap-4 lg:grid-cols-3">
+          <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-semibold text-foreground">Trafic réseau</h2>
+            </div>
+            <TrafficChart />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <Cpu className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-semibold text-foreground">Firmware</h2>
+            </div>
+            <FirmwareChart />
+          </div>
+        </div>
+
+        {/* Provisioning + Alerts Row */}
+        <div className="grid gap-4 lg:grid-cols-3">
+          <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-semibold text-foreground">Provisionnement (7 jours)</h2>
+            </div>
+            <ProvisioningChart />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <Bell className="h-4 w-4 text-status-warning" />
+              <h2 className="font-display font-semibold text-foreground">Alertes récentes</h2>
+            </div>
+            <div className="max-h-[240px] overflow-y-auto">
+              <AlertsList alerts={mockAlerts} />
+            </div>
+          </div>
+        </div>
 
         {/* Filters & Search */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -87,7 +130,7 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Grid */}
+        {/* CPE Grid */}
         {filtered.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.map((cpe) => (
