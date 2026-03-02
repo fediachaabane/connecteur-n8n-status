@@ -60,46 +60,8 @@ const Index = () => {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 space-y-6">
-        {/* Stats */}
+        {/* Stats - État des CPE en haut */}
         <StatsBar cpes={mockCPEs} />
-
-        {/* Charts Row */}
-        <div className="grid gap-4 lg:grid-cols-3">
-          <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5">
-            <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="h-4 w-4 text-primary" />
-              <h2 className="font-display font-semibold text-foreground">Trafic réseau</h2>
-            </div>
-            <TrafficChart />
-          </div>
-          <div className="rounded-xl border border-border bg-card p-5">
-            <div className="flex items-center gap-2 mb-4">
-              <Cpu className="h-4 w-4 text-primary" />
-              <h2 className="font-display font-semibold text-foreground">Firmware</h2>
-            </div>
-            <FirmwareChart />
-          </div>
-        </div>
-
-        {/* Provisioning + Alerts Row */}
-        <div className="grid gap-4 lg:grid-cols-3">
-          <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5">
-            <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="h-4 w-4 text-primary" />
-              <h2 className="font-display font-semibold text-foreground">Provisionnement (7 jours)</h2>
-            </div>
-            <ProvisioningChart />
-          </div>
-          <div className="rounded-xl border border-border bg-card p-5">
-            <div className="flex items-center gap-2 mb-4">
-              <Bell className="h-4 w-4 text-status-warning" />
-              <h2 className="font-display font-semibold text-foreground">Alertes récentes</h2>
-            </div>
-            <div className="max-h-[240px] overflow-y-auto">
-              <AlertsList alerts={mockAlerts} />
-            </div>
-          </div>
-        </div>
 
         {/* Filters & Search */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -144,6 +106,43 @@ const Index = () => {
             <p className="text-sm font-mono mt-1">Essayez un autre filtre ou recherche</p>
           </div>
         )}
+
+        {/* Charts - Graphiques en dessous */}
+        <div className="grid gap-4 lg:grid-cols-3">
+          <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-semibold text-foreground">Trafic réseau</h2>
+            </div>
+            <TrafficChart />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <Cpu className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-semibold text-foreground">Firmware</h2>
+            </div>
+            <FirmwareChart />
+          </div>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="h-4 w-4 text-primary" />
+              <h2 className="font-display font-semibold text-foreground">Provisionnement (7 jours)</h2>
+            </div>
+            <ProvisioningChart />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-2 mb-4">
+              <Bell className="h-4 w-4 text-status-warning" />
+              <h2 className="font-display font-semibold text-foreground">Alertes récentes</h2>
+            </div>
+            <div className="max-h-[240px] overflow-y-auto">
+              <AlertsList alerts={mockAlerts} />
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
