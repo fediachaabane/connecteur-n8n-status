@@ -24,16 +24,26 @@ const Home = () => (
 
     {/* Welcome Message */}
     <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <img src={logo} alt="Glow & Shine logo" className="h-20 mx-auto mb-8" loading="lazy" />
+      <img
+        src={logo}
+        alt="Glow & Shine logo"
+        className="h-40 w-40 mx-auto mb-8" // augmente la taille ici
+        loading="lazy"
+      />
       <h2 className="text-3xl font-bold text-primary mb-6">
         Welcome to Glow & Shine Beauty Salon ✨
       </h2>
       <div className="text-lg text-muted-foreground space-y-4 leading-relaxed">
         <p>
-          At Glow & Shine, we believe that beauty is more than just appearance — it's about confidence, self-care, and feeling your absolute best. Our salon offers a relaxing and friendly environment where our professional team is dedicated to bringing out your natural glow.
+          At Glow & Shine, we believe that beauty is more than just appearance —
+          it's about confidence, self-care, and feeling your absolute best. Our
+          salon offers a relaxing and friendly environment where our
+          professional team is dedicated to bringing out your natural glow.
         </p>
         <p>
-          Whether you're looking for a fresh haircut, a new color, or a complete transformation, we are here to make your experience enjoyable and unforgettable.
+          Whether you're looking for a fresh haircut, a new color, or a complete
+          transformation, we are here to make your experience enjoyable and
+          unforgettable.
         </p>
         <p className="text-xl font-medium text-primary">
           Let us help you shine, every day 💫

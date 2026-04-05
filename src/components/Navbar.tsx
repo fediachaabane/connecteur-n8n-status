@@ -20,7 +20,12 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur border-b border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Glow & Shine logo" className="h-10 w-auto" />
+          <img
+            src={logo}
+            alt="Glow & Shine logo"
+            className="h-40 w-40 mx-auto mb-8" // augmente la taille ici
+            loading="lazy"
+          />
         </Link>
 
         {/* Desktop */}
